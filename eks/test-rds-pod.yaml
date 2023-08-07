@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-rds-pod-deployment
+  namespace: eks-sample-app
+  labels:
+    app: test-rds-pod-app
+spec:
+  replicas: 7
+  selector:
+    matchLabels:
+      app: test-rds-pod-app
+  template:
+    metadata:
+      labels:
+        app: test-rds-pod-app
+
+    spec:
+      containers:
+      - name: mysql-client
+        image: mysql:latest  # Or any image with MySQL client installed
+        command: ["/bin/bash", "-c"]
+        args: ["while true; do sleep 3600; done"]

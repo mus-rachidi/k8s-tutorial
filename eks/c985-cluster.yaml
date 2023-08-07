@@ -1,0 +1,14 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: c985-clusterekslab-w
+  region: eu-west-1
+  version: "1.27"
+
+managedNodeGroups:
+  - name: c985-Node-group-Lab
+    instanceType: t2.micro
+    minSize: 1
+    maxSize: 4
+    desiredCapacity: 2
